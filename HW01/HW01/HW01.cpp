@@ -18,33 +18,40 @@ template<class T> T find_max(T *data, int size){
 	int main()
 	{
 		srand(time(NULL));
-		short *test = new short;
-		for (int i = 0; i < 6; i++){
+		int sizeS;
+		cout << "Input the size of array of short = ";
+		cin >> sizeS;
+		
+		short *test = new short[sizeS];
+		for (int i = 0; i < sizeS; i++){
 			test[i] = rand()%1000;
 		}
 		cout << "Array of 6 short values: " << endl;
-		for (int i = 0; i < 6; i++){
+		for (int i = 0; i < sizeS; i++){
 			cout << test[i] <<'\t';
-			if (i == 5)
+			if (i == sizeS-1)
 				cout << endl;
 		}
-		cout << "Maximun: " << find_max(test, 6) << endl;
+		cout << "Maximun: " << find_max(test, sizeS) << endl;
 		cout << "----------------------------------------------" << endl;
 
-		double upB = 100.0, lowB = 10.0; //defind upper bound and lower bound (0~10)
-		double *test2 = new double;
-		for (int i = 0; i < 6; i++){
-			test2[i] = rand() / (RAND_MAX+1);
-			//test2[i] = lowB + test2[i] * (upB - lowB);
+		double upB = 10.0, lowB = -10.0; //defind upper bound and lower bound (-10~10)
+		int sizeD;
+		cout << "Input the size of array of double = ";
+		cin >> sizeD;
+		double *test2 = new double[sizeD];
+		for (int i = 0; i < sizeD; i++){
+			test2[i] = (double)rand() / (RAND_MAX);
+			test2[i] = lowB + test2[i] * (upB - lowB);
 		}
-		/*cout << "Array of 6 short values: " << endl;
-		for (int i = 0; i < 6; i++){
+		cout << "Array of 6 short values: " << endl;
+		for (int i = 0; i < sizeD; i++){
 			cout << test2[i] << '\t';
-			if (i == 5)
+			if (i == sizeD-1)
 				cout << endl;
-		}*/
-		//cout << "Maximun: " << find_max(test2, 6) << endl;
-
+		}
+		cout << "Maximun: " << find_max(test2, sizeD) << endl;
+		
 		
 
 		system("pause");
