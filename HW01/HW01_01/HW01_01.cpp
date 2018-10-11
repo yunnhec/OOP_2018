@@ -66,7 +66,7 @@ int main()
 	cin >> sizeC;
 	char** test3 = new char*[sizeC];
 	for (int i = 0; i < sizeC; i++){
-		int n = rand() % 15+1;//avoid string with no char
+		int n = rand() % 15 + 1;//avoid string with no char
 		char* tmp = new char[n];
 		//cout << "n_" << i << " = " << n << endl; //length of each string
 		for (int j = 0; j < n; j++)

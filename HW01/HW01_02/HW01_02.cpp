@@ -7,8 +7,9 @@
 #include <math.h>
 #include <string>
 #include "HW01_02.h"
+
 using namespace std;
-//using namespace MyGeometry;
+
 double MyGeometry::Point::Length() { //calculate the distance from the point to the origin
 	double tmp = pow((pow(x, 2) + pow(y, 2)), 0.5);
 	return tmp;
@@ -20,11 +21,11 @@ string MyGeometry::Point::CoutPoint() { //return the string format string (X,Y)
 }
 
 
-MyGeometry::Point* LoadPoint(const char* filename, unsigned int& nPoint){ //opens a text file
+MyGeometry::Point* MyGeometry::LoadPoint(const char* filename, unsigned int& nPoint){ //opens a text file
 	ifstream file;
 	file.open(filename);
 	int n = 0;
-	MyGeometry::Point* p;
+	MyGeometry::Point* p = nullptr;
 	float* data;
 	float tmp;
 	if (!file) {
@@ -53,7 +54,7 @@ MyGeometry::Point* LoadPoint(const char* filename, unsigned int& nPoint){ //open
 	return p;
 };
 
-MyGeometry::Point MinVerticalDistance(MyGeometry::Point* &p){
+MyGeometry::Point MyGeometry::MinVerticalDistance(MyGeometry::Point* &p){
 	int n = _msize(p) / sizeof(*p);
 	int pos = 0;
 	float tmp = p[pos].y;
@@ -66,8 +67,8 @@ MyGeometry::Point MinVerticalDistance(MyGeometry::Point* &p){
 	return p[pos];
 };
 
-MyGeometry::Point* MyGeometry::SortbyLength(Point*&p) { //from small to large depending on the distance
-	Point tmp;
+MyGeometry::Point* MyGeometry::SortbyLength(MyGeometry::Point*&p) { //from small to large depending on the distance
+	MyGeometry::Point tmp;
 	int n = _msize(p) / sizeof(*p);
 	for (int i = n - 1; i > 0; i--){
 		for (int j = 0; j < i; ++j){
@@ -102,5 +103,3 @@ void MyGeometry::Report(const char* filename, Point* &p) {
 	}
 	file.close();
 };
-
-
